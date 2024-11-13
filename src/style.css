@@ -1,0 +1,160 @@
+:root {
+  font-family: 'Victor Mono', monospace;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+#app {
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.calendars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  overflow: hidden;
+  background-color: #fff;
+  background: url('@/../public/nasa-moon-phases.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container {
+  mix-blend-mode: screen;
+  z-index: 10;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  filter: contrast(1.25);
+  -webkit-filter: contrast(1.25);
+}
+
+table {
+  margin: -2px;
+  border-spacing: 4px;
+}
+
+td:not(.current), .friday, .day-name {
+  background: #8886;
+}
+
+td {
+  cursor: help;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container:not(.lunar-calendar) {
+  z-index: 10;
+}
+
+.table {
+  width: 100%;
+  line-height: 100%;
+  font-weight: bold;
+}
+
+.--table0,
+.--table2 {
+  font-size: 2vmin;
+}
+
+.--table0 th,
+.--table0 td,
+.--table2 th,
+.--table2 td {
+  text-align: center;
+  margin: 0;
+  width: 8vmin !important;
+  padding: 1.5vmin 1vmin 1.5vmin 1vmin;
+}
+
+.--table1 {
+  font-size: 3.5vmin;
+}
+
+.--table1 th,
+.--table1 td {
+  letter-spacing: -0.35ch;
+  text-align: center;
+  width: 8vmin !important;
+  padding: 1.5vmin 1vmin 1.5vmin 0;
+}
+
+tr:not(.info-table-row) * {
+  position: relative;
+  clip-path: polygon(59.9998% 92.3205%,56.8402% 93.7939%,53.4728% 94.6962%,49.9998% 95%,46.5269% 94.6961%,43.1594% 93.7938%,40% 92.3205%,18.3493% 79.8203%,15.4935% 77.8208%,13.0284% 75.3556%,11.0288% 72.4999%,9.5554% 69.3403%,8.6531% 65.9728%,8.3493% 62.4998%,8.3494% 37.4998%,8.6533% 34.0269%,9.5556% 30.6595%,11.029% 27.4999%,13.0286% 24.6441%,15.4937% 22.179%,18.3494% 20.1793%,40.0002% 7.6795%,43.1598% 6.2061%,46.5272% 5.3038%,50.0002% 5%,53.4731% 5.3039%,56.8406% 6.2062%,60.0002% 7.6795%,81.6508% 20.1796%,84.5065% 22.1792%,86.9716% 24.6444%,88.9712% 27.5001%,90.4446% 30.6597%,91.3468% 34.0272%,91.6507% 37.5002%,91.6506% 62.5002%,91.3467% 65.9731%,90.4444% 69.3405%,88.9711% 72.5001%,86.9714% 75.3559%,84.5063% 77.821%,81.6505% 79.8206%);
+}
+
+@media (orientation: landscape) {
+  .calendars {
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .container {
+    grid-template-columns: 1fr 2fr 1fr;
+    height: 50dvh;
+    gap: 5vmin;
+  }
+
+  .--table0 th,
+  .--table0 td,
+  .--table2 th,
+  .--table2 td {
+    width: 8vmin !important;
+  }
+}
+@media (orientation: portrait) {
+
+  .greg-calendar {
+    grid-area: sun;
+  }
+
+  .moon-calendar {
+    grid-area: moon;
+  }
+
+  .calendars {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "moon sun";
+  }
+
+  .container {
+    grid-template-rows: 1fr 2fr 1fr;
+    height: 100dvh;
+    width: 50dvw;
+    gap: 1vmin;
+  }
+}
